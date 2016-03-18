@@ -4,9 +4,7 @@
         @include('layouts.header')
     </head>
     <body>
-        <div>
-            @include('layouts.navbar')
-        </div>
+        @include('layouts.navbar')
         <div class="container">
             @section('content')
             @show

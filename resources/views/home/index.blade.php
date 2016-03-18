@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row">
         @foreach($data as $index)
-        <div data-example-id="bordered-table" class="bs-example col-md-6">
+        <div data-example-id="bordered-table" class="col-md-6 col-xs-12">
             <p>{{$index['name']}}</p>
             <table class="table table-bordered">
                 <thead>

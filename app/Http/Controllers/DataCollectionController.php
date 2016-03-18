@@ -1,20 +1,24 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use \Illuminate\Support\Facades\Config;
+
 /*
  * 收集数据类
  */
 class DataCollectionController extends Controller {
 
- 
     public function fileDownload() {
-        $csi300Url="ftp://115.29.204.48/webdata/Csi300Perf.xls";
-        exec("wget -P ".storage_path('app/data/').' '.$csi300Url);
+        $dataFileList = Config::get('datasource.datafile_list');
+        foreach($dataFileList as $indexName => $detail){
+            $Url="ftp://115.29.204.48/webdata/".$detail['fileName'];
+            exec("wget -P ".storage_path('app/data/').' '.$Url);
+        }
         
-        $sse50Url="ftp://115.29.204.48/webdata/000016perf.xls";
-        exec("wget -P ".storage_path('app/data/').' '.$sse50Url);
     } 
     public function fileRemove() {
         exec("rm -f ".storage_path('app/data/*'));
     } 
+    
+    
 }

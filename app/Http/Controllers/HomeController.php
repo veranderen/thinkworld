@@ -3,10 +3,10 @@
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;  
 use Illuminate\Support\Facades\DB;
+use \Illuminate\Support\Facades\Config;
+use \Illuminate\Support\Facades\Schema;
 
 class HomeController extends Controller {
-    private $execl_data;
-
     /**
      * 首页
      * @param  int  $id
@@ -14,16 +14,17 @@ class HomeController extends Controller {
      */
     public function index()
     {
-        $csi300Data['name'] = "沪深300";
-        $csi300Data['data'] = DB::table('csi300')->select('date', 'open', 'close', 'change','pe1','dp1')
-                ->orderBy('date', 'desc')->take(5)->get();
-        $data[] = $csi300Data;
+        $index = array();
+        $dataList = Config::get('datasource.datafile_list');
+        foreach($dataList as $indexName => $detail){
+            if (Schema::hasTable($indexName)) {
+                $data['name'] = $detail['name'];
+                $data['data'] = DB::table($indexName)->select('date', 'open', 'close', 'change', 'pe1', 'dp1')
+                                ->orderBy('date', 'desc')->take(3)->get();
+                $index[] = $data;
+            }
+        }
         
-        $sse50Data['name'] = "上证50";
-        $sse50Data['data'] = DB::table('sse50')->select('date', 'open', 'close', 'change','pe1','dp1')
-                ->orderBy('date', 'desc')->take(5)->get();
-        $data[] = $sse50Data;
-        
-        return view('home.index')->with('data', $data);
+        return view('home.index')->with('data', $index);
     }
 }
