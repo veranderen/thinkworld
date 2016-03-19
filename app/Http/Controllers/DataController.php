@@ -17,7 +17,7 @@ class DataController extends Controller {
     public function save()
     {
         $dataList = Config::get('datasource.datafile_list');
-        foreach($dataFileList as $indexName => $detail){
+        foreach($dataList as $indexName => $detail){
             if (!Schema::hasTable($indexName)) {
                 $this->createCsiTable($indexName);
             }
@@ -33,7 +33,7 @@ class DataController extends Controller {
         
         $insertData = array();
         foreach($this->execl_data as $key => $value) {
-            $result = DB::table('sse50')->where('date', $value['date'])->first();
+            $result = DB::table($tables)->where('date', $value['date'])->first();
 
             if ($result != '') {
                 break;
@@ -50,9 +50,6 @@ class DataController extends Controller {
             $data['dp2'] = $value['2dp2'];
             
             $insertData[] = $data;
-        }
-        if (!Schema::hasTable($tables)) {
-            createCsiTable($tables, $tables);
         }
         DB::table($tables)->insert($insertData);
     }

@@ -20,8 +20,16 @@
                 <tbody>
                     @foreach($index['data'] as $value)
                     <tr>
-                        @foreach($value as $v)
-                        <td>{{$v}}</td>
+                        @foreach($value as $k => $v)
+                            @if ($k == 'open' or $k == 'close' )
+                            <td>{{(int)$v}}</td>
+                            @elseif ($k == 'change' && $v > 0)
+                            <td class='s-up'>{{$v}}%</td>
+                            @elseif ($k == 'change' && $v < 0)
+                            <td class='s-down'>{{$v}}%</td>
+                            @else
+                            <td>{{$v}}</td>
+                            @endif
                         @endforeach
                     </tr>
                     @endforeach
