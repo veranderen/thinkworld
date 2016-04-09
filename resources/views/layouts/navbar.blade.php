@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">IndeWorld</a>
+            <a class="navbar-brand" href="#">IndexWorld</a>
 
         </div>
 
@@ -22,8 +22,8 @@
             </form>-->
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">中国大陆</a></li>
-                <li><a href="#">香港</a></li>
+                <li><a href="{{ URL::asset('/china')}}">中国大陆</a></li>
+                <li><a href="{{ URL::asset('/hk')}}">香港</a></li>
                 <li><a href="#">美股</a></li>
                 <li><a href="#">百科</a></li>
 

@@ -4,7 +4,7 @@
  * 
  */
 return [
-    'datafile_list' => [
+    'csi_datafile_list' => [
 //        'csi300' => [         //指数名-数据库表名
 //            'fileName' => 'Csi300Perf.xls', //下载的文件名
 //            'name' => '沪深300',     //指数名称
@@ -65,5 +65,15 @@ return [
 //            'fileName' => 'Csi967Perf.xls',
 //            'name' => '基本面600', 
 //        ],
+    ],
+    'hsi_datafile_list' => [
+        'hsi' => [         //恒生指数
+            'fileName' => 'hsi.csv', //下载的文件名
+            'name' => '恒生指数',     //指数名称
+        ],
+        'hscei' => [       //恒生国企指数
+            'fileName' => 'hscei.csv',
+            'name' => '恒生国企指数',     
+        ],
     ],
 ];
