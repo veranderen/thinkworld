@@ -18,7 +18,6 @@ class DataCollectionController extends Controller {
         $dataFileList = Config::get('datasource.hsi_datafile_list');
         foreach($dataFileList as $indexName => $detail){
             $filename = 'idx_'.(int)date('d').date('M').(int)date('y').'.csv';
-            $filename = 'idx_8Apr16.csv';
             $Url="http://sc.hangseng.com/gb/www.hsi.com.hk/HSI-Net/static/revamp/contents/en/indexes/report/$indexName/";
             exec("wget -O ".storage_path('app/data/').$detail['fileName'].' '.$Url.$filename);
         }
