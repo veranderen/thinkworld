@@ -11,5 +11,6 @@
             @section('content')
             @show
         </div>
+        @include('layouts.footer')
     </body>
 </html>

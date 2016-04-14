@@ -38,6 +38,8 @@ class Kernel extends ConsoleKernel
             
             $data = new DataController();
             $data->save();
-        })->daily();
+//        everyMinute();
+//        dailyAt('15:00');
+        })->dailyAt('18:30');
     }
 }

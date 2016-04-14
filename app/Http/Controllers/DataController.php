@@ -85,9 +85,9 @@ class DataController extends Controller {
             }
             $data = array();
             $data['date'] = $date;
-            $data['hight'] = trim($value[4], "\"\t\n\r\0\x0B");
-            $data['low'] = trim($value[5], "\"\t\n\r\0\x0B");
-            $data['close'] = trim($value[6], "\"\t\n\r\0\x0B");
+            $data['hight'] = trim($value[3], "\"\t\n\r\0\x0B");
+            $data['low'] = trim($value[4], "\"\t\n\r\0\x0B");
+            $data['close'] = trim($value[5], "\"\t\n\r\0\x0B");
             $data['change'] = trim($value[7], "\"\t\n\r\0\x0B");
             $data['turnover'] = '';
             $data['pe1'] = trim($value[9], "\"\t\n\r\0\x0B");
